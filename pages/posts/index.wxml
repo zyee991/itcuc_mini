@@ -1,13 +1,35 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view class="page">
+    <view class='panel__hd'>
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <block wx:for="{{list}}">
+                <navigator url="index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="../../images/2.jpg"></image>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <text class="weui-media-box__title">{{item.title.rendered}}</text>
+                        <text class="weui-media-box__desc">{{item.excerpt.rendered}}</text>
+                    </view>
+                </navigator>
+                </block>
+                <!--<navigator url="index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">-->
+                <!--<view class="weui-media-box__hd weui-media-box__hd_in-appmsg">-->
+                <!--<image class="weui-media-box__thumb" mode="scaleToFill" src="{{imageUrl}}"></image>-->
+                <!--</view>-->
+                <!--<view class="weui-media-box__bd weui-media-box__bd_in-appmsg">-->
+                <!--<text class="weui-media-box__title">标题二</text>-->
+                <!--<text class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</text>-->
+                <!--</view>-->
+                <!--</navigator>-->
+            </view>
+            <view class="weui-panel__ft">
+                <view url="index" class="weui-cell weui-cell_access weui-cell_link">
+                    <view class="weui-cell__bd">查看更多</view>
+                    <text class="weui-cell__ft"></text>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>

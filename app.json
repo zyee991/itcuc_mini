@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/posts/index",
-    "pages/index/index",    
+    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
@@ -9,5 +9,24 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon_nav_dialog.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "日程",
+        "iconPath": "images/icon_nav_button.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "images/icon_nav_cell.png"
+      }
+    ]
   }
 }

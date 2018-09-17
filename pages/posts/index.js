@@ -1,54 +1,35 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var Config = require('../../config.js')
+var ImageUtil = require('../../utils/imageUtil')
 
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+    data: {
+        list:[],
+        page:1,
+        per_page:5,
+        search:"",
+        url:Config.remote.posts
+    },
+    onLoad: function () {
+        var that = this;
+        var page = that.data.page;
+        var per_page = that.data.per_page;
+        var search = that.data.search;
+        var param = {page:page,per_page:per_page,search:search};
+        wx.request({
+            url:Config.remote.posts,
+            method:"GET",
+            data:param,
+            success:function (res) {
+                var html = res.data[0].content.rendered;
+                ImageUtil.image.getFirstImage(html);
+                that.setData({
+                    list:res.data,
+                    page:page+1
+                });
+            }
         })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
 })
