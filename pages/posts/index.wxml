@@ -6,7 +6,7 @@
                 <block wx:for="{{list}}">
                 <navigator url="index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../images/2.jpg"></image>
+                        <image class="weui-media-box__thumb" src="{{item.img}}"></image>
                     </view>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                         <text class="weui-media-box__title">{{item.title.rendered}}</text>

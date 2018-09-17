@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.5",
+	"libVersion": "2.3.0",
 	"appid": "wxa82598762e16f370",
 	"projectname": "itcuc_mini",
 	"isGameTourist": false,
