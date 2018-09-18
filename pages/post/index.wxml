@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="page">
+    <view class='panel__hd'>
+    </view>
+    <view class='panel__bd'>
+        <view class="weui-panel__bd">
+            <view class="itcuc-content">
+                <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+    </view>
+</view>
