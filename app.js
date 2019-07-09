@@ -6,6 +6,14 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    // 保存wp用户信息
+    wx.getStorage({
+      key: 'wpuser',
+      success: function(res) {
+        this.globalData.wpuser = res;
+      },
+    })
+
     // 登录
     wx.login({
       success: res => {
@@ -34,6 +42,18 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    wpuser: {
+      "id":null,
+      "userLogin":null,
+      "userPass":null,
+      "userNicename": null,
+      "userEmail": null,
+      "userUrl": null,
+      "userRegistered": null,
+      "userActivationKey": null,
+      "userStatus": null,
+      "displayName": null,
+    }
   }
 })
